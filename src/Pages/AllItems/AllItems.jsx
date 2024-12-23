@@ -33,7 +33,7 @@ const AllItems = () => {
                 >
                   Delete
                 </button>
-                <button className="btn btn-primary" type="button"><Link to={`/items/${item._id}`}>details</Link></button>
+                <Link to={`/items/${item._id}`}><button className="btn btn-primary" type="button">details</button></Link>
               </div>
             </div>
           </div>

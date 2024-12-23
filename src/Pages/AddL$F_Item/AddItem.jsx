@@ -87,13 +87,15 @@ const AddItem = () => {
                 <label className="text-gray-700" htmlFor="category">
                   Category
                 </label>
-                <input
-                  id="category"
-                  name="category"
-                  type="text"
-                  placeholder="Ex: pets, documents, gadgets"
-                  className="block w-full px-4 py-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-                />
+                <select
+                  name="post_type"
+                  id="post_type"
+                  className="border p-2 rounded-md w-full"
+                >
+                  {
+                    allData.map(item => <option key={item._id} value={item.category}>{item.category}</option>)
+                  }
+                </select>
               </div>
 
               {/* Location */}
