@@ -1,0 +1,123 @@
+[
+    {
+      "userEmail": "email@gmail.com",
+      "post_type": "Lost",
+      "title": "Lost Wallet",
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEPG3CO2OTb-o5Bmv9yh2qU7YZ2rhk7U-0IQ&s",
+      "category": "personal belongings",
+      "location": "New York City",
+      "contact_name": "John Doe",
+      "contact_email": "john.doe@gmail.com",
+      "description": "Black leather wallet with driver's license and credit cards.",
+      "Date": "2024-12-05T14:30:00.000Z"
+    },
+    {
+      "userEmail": "email@gmail.com",
+      "post_type": "Found",
+      "title": "Found Backpack",
+      "thumbnail": "https://t4.ftcdn.net/jpg/09/43/97/27/360_F_943972715_LNHqy7doi3yabAeKEL0Rto8zbdYndf32.jpg",
+      "category": "bags",
+      "location": "Los Angeles Airport",
+      "contact_name": "Jane Smith",
+      "contact_email": "jane.smith@gmail.com",
+      "description": "Blue backpack with school supplies.",
+      "Date": "2024-12-04T16:45:00.000Z"
+    },
+    {
+      "userEmail": "menk@gmail.com",
+      "post_type": "Lost",
+      "title": "Lost Cat",
+      "thumbnail": "https://www.shutterstock.com/image-photo/cat-red-collar-260nw-16954843.jpg",
+      "category": "pets",
+      "location": "Downtown Chicago",
+      "contact_name": "Mike Wilson",
+      "contact_email": "mike.wilson@gmail.com",
+      "description": "Gray tabby cat with a red collar.",
+      "Date": "2024-12-03T10:15:00.000Z"
+    },
+    {
+      "userEmail": "menk@gmail.com",
+      "post_type": "Found",
+      "title": "Found Glasses",
+      "thumbnail": "https://specscart.co.uk/media/catalog/product/t/l/tl1001f-1-2.webp",
+      "category": "accessories",
+      "location": "Central Park",
+      "contact_name": "Emma Brown",
+      "contact_email": "emma.brown@gmail.com",
+      "description": "Pair of black-rimmed glasses.",
+      "Date": "2024-12-02T12:20:00.000Z"
+    },
+    {
+      "userEmail": "menk@gmail.com",
+      "post_type": "Lost",
+      "title": "Lost Smartphone",
+      "thumbnail": "https://www.custommacbd.com/cdn/shop/products/iPhone-silicone-case-Midnight-Custom-Mac-BD_a5cdd6dd-d0d5-42d8-a652-321747b6a7b7.jpg?v=1637061749",
+      "category": "electronics",
+      "location": "San Francisco Bay Area",
+      "contact_name": "Mark Green",
+      "contact_email": "mark.green@gmail.com",
+      "description": "Black iPhone 13 in a silicone case.",
+      "Date": "2024-12-01T18:00:00.000Z"
+    },
+    {
+      "userEmail": "menk@gmail.com",
+      "post_type": "Found",
+      "title": "Found Umbrella",
+      "thumbnail": "https://down-my.img.susercontent.com/file/8c9016957963a697613981b14a3afddf",
+      "category": "personal belongings",
+      "location": "Boston Public Library",
+      "contact_name": "Linda White",
+      "contact_email": "linda.white@gmail.com",
+      "description": "Red umbrella with a floral pattern.",
+      "Date": "2024-12-06T09:30:00.000Z"
+    },
+    {
+      "userEmail": "email@gmail.com",
+      "post_type": "Lost",
+      "title": "Lost Watch",
+      "thumbnail": "https://img.drz.lazcdn.com/static/bd/p/ff57971ea93be758a3cfdaf27b222b53.jpg_960x960q80.jpg_.webp",
+      "category": "accessories",
+      "location": "Miami Beach",
+      "contact_name": "Kevin Jones",
+      "contact_email": "kevin.jones@gmail.com",
+      "description": "Silver wristwatch with a leather strap.",
+      "Date": "2024-12-07T14:00:00.000Z"
+    },
+    {
+      "userEmail": "email@gmail.com",
+      "post_type": "Found",
+      "title": "Found Keys",
+      "thumbnail": "https://c8.alamy.com/comp/A6P3JX/bmw-car-keys-park-lane-A6P3JX.jpg",
+      "category": "personal belongings",
+      "location": "Denver Mall",
+      "contact_name": "Sophia Davis",
+      "contact_email": "sophia.davis@gmail.com",
+      "description": "Set of car keys with a BMW logo.",
+      "Date": "2024-12-08T15:00:00.000Z"
+    },
+    {
+      "userEmail": "email@gmail.com",
+      "post_type": "Lost",
+      "title": "Lost Drone",
+      "thumbnail": "https://tiimg.tistatic.com/fp/1/008/177/drone--924.jpg",
+      "category": "gadgets",
+      "location": "Seattle Park",
+      "contact_name": "Ben Miller",
+      "contact_email": "ben.miller@gmail.com",
+      "description": "DJI drone with a camera attached.",
+      "Date": "2024-12-09T11:00:00.000Z"
+    },
+    {
+      "userEmail": "menk@gmail.com",
+      "post_type": "Found",
+      "title": "Found Bracelet",
+      "thumbnail": "https://scene7.samsclub.com/is/image/samsclub/0080693900929_A",
+      "category": "jewelry",
+      "location": "Las Vegas Hotel Lobby",
+      "contact_name": "Olivia Clark",
+      "contact_email": "olivia.clark@gmail.com",
+      "description": "Gold bracelet with a heart charm.",
+      "Date": "2024-12-10T10:00:00.000Z"
+    }
+  ]
+  

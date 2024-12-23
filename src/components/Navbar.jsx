@@ -9,7 +9,10 @@ const Navbar = () => {
         <Link to={""}>Home</Link>
       </li>
       <li>
-        <Link to={""}>Lost & Found Items Page</Link>
+        <Link to={"/allItems"}>Lost & Found Items Page</Link>
+      </li>
+      <li>
+        <Link to={"/addItems"}>Add Lost and found</Link>
       </li>
     </>
   );
@@ -70,16 +73,15 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
+                  <Link to={"/addItems"} className="justify-between">
+                    Add Lost & Found Item
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a>All Recovered Items</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <a>Manage My Items</a>
                 </li>
               </ul>
             </div>
@@ -89,8 +91,12 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <button><Link to={'/login'}>login</Link></button>
-            <button><Link to={'/register'}>register</Link></button>
+            <button>
+              <Link to={"/login"}>login</Link>
+            </button>
+            <button>
+              <Link to={"/register"}>register</Link>
+            </button>
           </>
         )}
       </div>
