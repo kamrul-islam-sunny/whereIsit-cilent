@@ -3,11 +3,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Update = () => {
     const {user} = useContext(AuthContext)
     const item = useLoaderData()
     // const {Date, category} = item
+    const [startDate, setStartDate] = useState(new Date());
     const [allData, setAllData] = useState([])
 
     useEffect(()=>{
@@ -23,11 +25,11 @@ const Update = () => {
         initialData.Date = startDate;
         const userUpdatedData = {...initialData};
         console.log(userUpdatedData)
-        // axios.post('http://localhost:4002/addItems', userInfo)
-        // .then(res => {
-        //   console.log(res.data)
-        //   toast.success('successfully add item.')
-        // })
+        axios.put(`http://localhost:4002/item/${item._id}`, userUpdatedData)
+        .then(res => {
+          console.log(res.data)
+          toast.success('successfully Update item.')
+        })
     }
     return (
          <div className="flex flex-col-reverse lg:flex-row">
@@ -134,6 +136,7 @@ const Update = () => {
                           name="contact_name"
                           type="text"
                           defaultValue={user?.displayName || ""}
+                          readOnly
                           className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-100 border border-gray-200 rounded-md focus:outline-none"
                         />
                       </div>
@@ -147,6 +150,7 @@ const Update = () => {
                           name="contact_email"
                           type="email"
                           defaultValue={user?.email || ""}
+                          readOnly
                           className="block w-full px-4 py-2 mt-2 text-gray-700 bg-gray-100 border border-gray-200 rounded-md focus:outline-none"
                         />
                       </div>
@@ -171,7 +175,7 @@ const Update = () => {
                         type="submit"
                         className="disabled:cursor-not-allowed px-8 py-2.5 leading-5 text-white transition-colors duration-300 bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
                       >
-                        Add Post
+                        Update Post
                       </button>
                     </div>
                   </form>

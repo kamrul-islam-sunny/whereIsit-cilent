@@ -10,6 +10,7 @@ import AllItems from "../Pages/AllItems/AllItems";
 import Details from "../Pages/Details/Details";
 import MyItem from "../Pages/MyItem/MyItem";
 import Update from "../Pages/UpdatePage/Update";
+import AllRecoveredItem from "../Pages/All_Recovered_Item/AllRecoveredItem";
 
   const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ import Update from "../Pages/UpdatePage/Update";
           path: '/updateItems/:id',
           element: <Update></Update>,
           loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
+        },
+        {
+          path: '/allRecovered',
+          element: <AllRecoveredItem></AllRecoveredItem>
         },
       ]
     },
