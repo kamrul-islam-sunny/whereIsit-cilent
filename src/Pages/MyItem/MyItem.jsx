@@ -5,6 +5,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Lottie from "lottie-react";
 import NoData from "../../assets/animation/noData.json";
+import toast from "react-hot-toast";
 
 const MyItem = () => {
   const [postItem, setPostItem] = useState([]);
@@ -20,12 +21,40 @@ const MyItem = () => {
   const removeItem = (id) => {
     axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
       console.log(res.data);
+      toast.success("successfully delete.");
     });
   };
 
-  const handleUpdate = (id) =>{
-    
-  }
+  const toastModi = (id) => {
+    toast((t) => (
+      <div className="flex gap-3 items-center">
+        <div>
+          <p>
+            Are you <b>sure?</b>
+          </p>
+        </div>
+        <div className="gap-2 flex">
+          <button
+            className="bg-red-400 text-white px-3 py-1 rounded-md"
+            onClick={() => {
+              toast.dismiss(t.id);
+              removeItem(id);
+            }}
+          >
+            Yes
+          </button>
+          <button
+            className="bg-green-400 text-white px-3 py-1 rounded-md"
+            onClick={() => toast.dismiss(t.id)}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    ));
+  };
+
+  const handleUpdate = (id) => {};
   if (postItem.length === 0) {
     return (
       <div className="text-center max-w-2xl">
@@ -75,7 +104,7 @@ const MyItem = () => {
                     Update
                   </button>
                   <button
-                    onClick={() => removeItem(item._id)}
+                    onClick={() => toastModi(item._id)}
                     className="btn btn-primary"
                   >
                     Delete
