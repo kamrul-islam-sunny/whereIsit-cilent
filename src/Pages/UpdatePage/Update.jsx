@@ -25,7 +25,7 @@ const Update = () => {
         initialData.Date = startDate;
         const userUpdatedData = {...initialData};
         console.log(userUpdatedData)
-        axios.put(`http://localhost:4002/item/${item._id}`, userUpdatedData)
+        axios.put(`http://localhost:4002/itemUpdate/${item._id}`, userUpdatedData)
         .then(res => {
           console.log(res.data)
           toast.success('successfully Update item.')
