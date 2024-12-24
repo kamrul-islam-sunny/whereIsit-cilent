@@ -10,11 +10,7 @@ const AllItems = () => {
       .then((res) => setData(res.data));
   }, []);
   console.log(data);
-  const removeItem = (id) => {
-    axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
-      console.log(res.data);
-    });
-  };
+
   return (
     <div className="grid md:grid-cols-2 grid-cols-3">
       {data.map((item) => (
@@ -27,13 +23,8 @@ const AllItems = () => {
               <h2 className="card-title">Shoes!</h2>
               <p>If a dog chews shoes whose shoes does he choose?</p>
               <div className="card-actions justify-end">
-                <button
-                  onClick={() => removeItem(item._id)}
-                  className="btn btn-primary"
-                >
-                  Delete
-                </button>
                 <Link to={`/items/${item._id}`}><button className="btn btn-primary" type="button">details</button></Link>
+                <Link to={`/updateItems/${item._id}`}><button className="btn btn-info" type="button">Update</button></Link>
               </div>
             </div>
           </div>

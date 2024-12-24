@@ -8,6 +8,8 @@ import RegisterPage from "../Pages/RegisterPage";
 import AddItem from "../Pages/AddL$F_Item/AddItem";
 import AllItems from "../Pages/AllItems/AllItems";
 import Details from "../Pages/Details/Details";
+import MyItem from "../Pages/MyItem/MyItem";
+import Update from "../Pages/UpdatePage/Update";
 
   const router = createBrowserRouter([
     {
@@ -38,6 +40,15 @@ import Details from "../Pages/Details/Details";
         {
           path: '/items/:id',
           element: <Details></Details>,
+          loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
+        },
+        {
+          path: '/myItems',
+          element: <MyItem></MyItem>,
+        },
+        {
+          path: '/updateItems/:id',
+          element: <Update></Update>,
           loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
         },
       ]

@@ -88,8 +88,8 @@ const AddItem = () => {
                   Category
                 </label>
                 <select
-                  name="post_type"
-                  id="post_type"
+                  name="category"
+                  id="category"
                   className="border p-2 rounded-md w-full"
                 >
                   {
