@@ -11,6 +11,7 @@ import Details from "../Pages/Details/Details";
 import MyItem from "../Pages/MyItem/MyItem";
 import Update from "../Pages/UpdatePage/Update";
 import AllRecoveredItem from "../Pages/All_Recovered_Item/AllRecoveredItem";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
 
   const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ import AllRecoveredItem from "../Pages/All_Recovered_Item/AllRecoveredItem";
         },
         {
           path: "/addItems",
-          element: <AddItem></AddItem>
+          element: <PrivateRouter><AddItem></AddItem></PrivateRouter>
         },
         {
           path: '/allItems',
@@ -40,21 +41,21 @@ import AllRecoveredItem from "../Pages/All_Recovered_Item/AllRecoveredItem";
         },
         {
           path: '/items/:id',
-          element: <Details></Details>,
+          element: <PrivateRouter><Details></Details></PrivateRouter>,
           loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
         },
         {
           path: '/myItems',
-          element: <MyItem></MyItem>,
+          element: <PrivateRouter><MyItem></MyItem></PrivateRouter>,
         },
         {
           path: '/updateItems/:id',
-          element: <Update></Update>,
+          element: <PrivateRouter><Update></Update></PrivateRouter>,
           loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
         },
         {
           path: '/allRecovered',
-          element: <AllRecoveredItem></AllRecoveredItem>
+          element: <PrivateRouter><AllRecoveredItem></AllRecoveredItem></PrivateRouter>
         },
       ]
     },

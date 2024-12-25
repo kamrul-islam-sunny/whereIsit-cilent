@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   const { user, userLogout } = useContext(AuthContext);
-  console.log(user);
+
 
   return (
     <div className="navbar bg-base-100">

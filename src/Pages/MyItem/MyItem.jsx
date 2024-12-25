@@ -10,14 +10,13 @@ import toast from "react-hot-toast";
 const MyItem = () => {
   const [postItem, setPostItem] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4002/userItems?email=${user.email}`)
+      .get(`http://localhost:4002/userItems?email=${user.email}`,
+       {withCredentials: true})
       .then((res) => setPostItem(res.data));
   }, []);
-  console.log(postItem);
   const removeItem = (id) => {
     axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
       console.log(res.data);

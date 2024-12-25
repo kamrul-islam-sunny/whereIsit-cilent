@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Modal from "../../components/Modal";
 import toast from "react-hot-toast";
 
 const Details = () => {
-  const detailsDate = useLoaderData();
+  const itemDate = useLoaderData();
+  const [detailsDate, setDetailsDate] = useState(itemDate)
   console.log(detailsDate);
-  const { thumbnail, title, description, post_type, _id } = detailsDate;
+  const { thumbnail, title, description, post_type } = detailsDate || {};
   const handleModal = () => {
-    if (detailsDate?.status !== "recovered") {
+    if (detailsDate?.status !== "recovered" ) {
       const modal = document.getElementById("my_modal_1");
       if (modal) modal.showModal();
     }
@@ -41,7 +42,7 @@ const Details = () => {
               </Link>
             )}
           </div>
-          <Modal id={_id}></Modal>
+          <Modal itemDate={itemDate} setDetailsDate={setDetailsDate}></Modal>
         </div>
       </div>
     </div>

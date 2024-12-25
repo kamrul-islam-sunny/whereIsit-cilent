@@ -3,6 +3,7 @@ import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const provider = new GoogleAuthProvider();
@@ -38,9 +39,21 @@ const AuthProvider = ({children}) => {
   };
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if(currentUser?.email)
+      {
+        const user = {email: currentUser.email}
+        axios
+          .post("http://localhost:4002/jwt", user, {withCredentials: true})
+          .then((res) => console.log(res.data));
+          setLoading(false)
+      }else{
+        axios.post('http://localhost:4002/logout', {}, {withCredentials: true})
+        .then(res => {console.log(res.data)})
+      }
       setLoading(false);
+      
     });
     return () => {
       unSubscribe();

@@ -1,36 +1,47 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 
-const Modal = ({id}) => {
+const Modal = ({ itemDate, setDetailsDate }) => {
   const [recoveryDate, setRecoveryDate] = useState(new Date());
   const { user } = useContext(AuthContext);
+
+  const [recoveryData, setRecoveryData] = useState(null);
+
+  const handleRecoveredFrom = (e) => {
+    e.preventDefault();
+    // const form = e.target.value
+    const recovered_location = e.target.recovered_location.value;
+    const email = user.email;
+    const itemId = itemDate._id;
+    const recoveryInfo = { recovered_location, recoveryDate, email, itemId };
+    console.log(recoveryInfo);
+
+    axios
+      .post("http://localhost:4002/recoveredItem", recoveryInfo)
+      .then((res) => console.log(res.data));
+
+      if(recovered_location)
+      {
+        const data = {
+          status: "recovered",
+        };
+        axios
+          .patch(`http://localhost:4002/item/${itemDate._id}`, data)
+          .then((res) => {
+            console.log(res.data);
+            setDetailsDate({ ...itemDate, status: "recovered" });
+          });
+      }
+  };
+
+  useEffect(() => {}, []);
+
   const closeModal = () => {
     const modal = document.getElementById("my_modal_1");
     if (modal) modal.close();
   };
-
-  const handleRecoveredFrom = (e) =>{
-    e.preventDefault();
-    // const form = e.target.value
-    const recovered_location = e.target.recovered_location.value
-    const email = user.email;
-    const itemId = id ;
-    const recoveryInfo = { recovered_location, recoveryDate, email, itemId}
-    console.log(recoveryInfo);
-
-    axios.post('http://localhost:4002/recoveredItem', recoveryInfo)
-    .then(res => console.log(res.data))
-
-    const data = {
-        status : "recovered"
-    } 
-
-    axios.patch(`http://localhost:4002/item/${id}`, data)
-    .then(res => console.log(res.data))
-
-  }
 
   return (
     <div>
