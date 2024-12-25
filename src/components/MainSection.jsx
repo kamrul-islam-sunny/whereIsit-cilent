@@ -1,9 +1,10 @@
 import React from 'react';
+import HomePage from '../Pages/Home/HomePage';
 
 const MainSection = () => {
     return (
         <div>
-            <h1 className='text-center py-10 text-5xl font-medium'>main section</h1>
+            <HomePage></HomePage>
         </div>
     );
 };

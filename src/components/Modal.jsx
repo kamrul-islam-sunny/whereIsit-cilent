@@ -22,18 +22,19 @@ const Modal = ({ itemDate, setDetailsDate }) => {
       .post("http://localhost:4002/recoveredItem", recoveryInfo)
       .then((res) => console.log(res.data));
 
-      if(recovered_location)
-      {
-        const data = {
-          status: "recovered",
-        };
-        axios
-          .patch(`http://localhost:4002/item/${itemDate._id}`, data)
-          .then((res) => {
-            console.log(res.data);
+    if (recovered_location) {
+      const data = {
+        status: "recovered",
+      };
+      axios
+        .patch(`http://localhost:4002/item/${itemDate._id}`, data)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
             setDetailsDate({ ...itemDate, status: "recovered" });
-          });
-      }
+          }
+        });
+    }
   };
 
   useEffect(() => {}, []);

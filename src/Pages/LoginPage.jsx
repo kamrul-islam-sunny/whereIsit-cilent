@@ -16,13 +16,13 @@ const LoginPage = () => {
     userLogin(email, password)
       .then((result) => {
         toast.success('Login Successfully!')
-        console.log(result);
+        // console.log(result);
         navigate(location?.state ? location.state : '/')
         
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log(err.message)
+        // console.log(err.message)
         
       });
   };
@@ -30,6 +30,7 @@ const LoginPage = () => {
   const handleGoogleSignIn = () => {
     userGoogleLogin()
       .then((result) => {
+        toast.success('Login Successfully!')
         navigate(location?.state ? location.state : "/");
         // console.log(result.user)
       })
@@ -41,7 +42,7 @@ const LoginPage = () => {
   return (
     <div>
       <div className="min-h-screen flex justify-center items-center ">
-        <div className="card bg-gradient-to-r from-emerald-500 to-emerald-700 w-full md:max-w-lg max-w-sm rounded-md py-10 shrink-0 shadow-2xl  border border-emerald-200 my-4">
+        <div className="card bg-gradient-to-r  w-full md:max-w-lg max-w-sm rounded-md py-10 shrink-0 shadow-2xl  border border-indigo-200 my-4">
           <h2 className="text-2xl  font-semibold text-center">
             Login your account
           </h2>

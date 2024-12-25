@@ -6,20 +6,29 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import Lottie from "lottie-react";
 import NoData from "../../assets/animation/noData.json";
 import toast from "react-hot-toast";
+import useAxios from "../../hooks/useAxios";
+import { Link } from "react-router-dom";
 
 const MyItem = () => {
   const [postItem, setPostItem] = useState([]);
   const { user } = useContext(AuthContext);
-
+  const axiosSecure = useAxios()
   useEffect(() => {
-    axios
-      .get(`http://localhost:4002/userItems?email=${user.email}`,
-       {withCredentials: true})
-      .then((res) => setPostItem(res.data));
+    // axios
+    //   .get(`http://localhost:4002/userItems?email=${user.email}`, {
+    //     withCredentials: true,
+    //   })
+    //   .then((res) => setPostItem(res.data));
+    axiosSecure.get(`/userItems?email=${user.email}`)
+    .then((res) => setPostItem(res.data))
+
   }, []);
+  console.log(postItem, "postItem")
   const removeItem = (id) => {
     axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
       console.log(res.data);
+      const remainingData =  postItem.filter(item => item._id !== id);
+      setPostItem(remainingData)
       toast.success("successfully delete.");
     });
   };
@@ -53,7 +62,10 @@ const MyItem = () => {
     ));
   };
 
-  const handleUpdate = (id) => {};
+  const handleUpdate = (id) => {
+
+
+  };
   if (postItem.length === 0) {
     return (
       <div className="text-center max-w-2xl">
@@ -96,12 +108,11 @@ const MyItem = () => {
                   {item.Date}
                 </td>
                 <td className="border border-gray-300 px-6 py-3 flex gap-4">
-                  <button
-                    onClick={() => handleUpdate(item._id)}
-                    className="btn btn-primary"
-                  >
-                    Update
-                  </button>
+                 <Link to={`/updateItems/${item._id}`}>
+                    <button className="btn btn-info" type="button">
+                      Update
+                    </button>
+                  </Link>
                   <button
                     onClick={() => toastModi(item._id)}
                     className="btn btn-primary"

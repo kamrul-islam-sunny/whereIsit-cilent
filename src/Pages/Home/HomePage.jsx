@@ -1,5 +1,7 @@
 import React from "react";
 import {Helmet} from "react-helmet";
+import Slider from "../../components/Slider";
+import Cart from "../../components/Cart";
 
 const HomePage = () => {
   return (
@@ -7,7 +9,8 @@ const HomePage = () => {
       <Helmet>
         <title>Home page</title>
       </Helmet>
-      <h1 className="text-4xl text-center"> home page</h1>
+      <Slider></Slider>
+      <Cart></Cart>
     </div>
   );
 };

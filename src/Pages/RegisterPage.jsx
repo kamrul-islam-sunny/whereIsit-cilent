@@ -25,15 +25,6 @@ const RegisterPage = () => {
     const user = { name, email, photo};
 
     // TODO ADD MY SERVER SIDE LINK
-    // fetch('https://crowdcube-backend.vercel.app/users', {
-    //   method: 'POST',
-    //   headers:{
-    //     'Content-type': 'application/json'
-    //   },
-    //   body: JSON.stringify(user)
-    // })
-    // .then(res => res.json())
-    // .then(data => console.log('clint',data))
 
     // const passRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 
@@ -46,7 +37,7 @@ const RegisterPage = () => {
     userRegister(email, password)
       .then((result) => {
         toast.success('Successfully Register!')
-        navigate('/')
+        navigate(location?.state ? location.state : "/");
         UpdateUserProfile({ displayName: name, photoURL: photo })
           .then((result) => {
           })
@@ -72,7 +63,7 @@ const RegisterPage = () => {
   };
   return (
     <div className="min-h-screen flex justify-center py-10 items-center ">
-      <div className="card  bg-gradient-to-r from-purple-500 to-purple-700 w-full md:max-w-lg max-w-sm rounded-lg py-10 shrink-0  border border-sky-200">
+      <div className="card  bg-gradient-to-r  w-full md:max-w-lg max-w-sm rounded-lg py-10 shrink-0  border border-sky-200">
         <h2 className="text-2xl font-semibold text-center">
           Register your account
         </h2>
@@ -84,6 +75,7 @@ const RegisterPage = () => {
             <input
               type="text"
               name="name"
+              required
               placeholder="Enter your name"
               className="input input-bordered"
               // {required && toast.error('name required')}
