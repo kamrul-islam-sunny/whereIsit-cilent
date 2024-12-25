@@ -109,13 +109,13 @@ const MyItem = () => {
                 </td>
                 <td className="border border-gray-300 px-6 py-3 flex gap-4">
                  <Link to={`/updateItems/${item._id}`}>
-                    <button className="btn btn-info" type="button">
+                    <button className="btn text-white bg-indigo-600 hover:bg-indigo-700" type="button">
                       Update
                     </button>
                   </Link>
                   <button
                     onClick={() => toastModi(item._id)}
-                    className="btn btn-primary"
+                    className="btn text-white bg-indigo-600 hover:bg-indigo-700"
                   >
                     Delete
                   </button>

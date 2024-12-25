@@ -23,7 +23,9 @@ const Update = () => {
         const formUpdate = new FormData(e.target);
         const initialData = Object.fromEntries(formUpdate.entries());
         initialData.Date = startDate;
-        const userUpdatedData = {...initialData};
+        // "userEmail": null,
+        const userEmail = user.email
+        const userUpdatedData = {...initialData, userEmail};
         console.log(userUpdatedData)
         axios.put(`http://localhost:4002/itemUpdate/${item._id}`, userUpdatedData)
         .then(res => {
@@ -32,10 +34,9 @@ const Update = () => {
         })
     }
     return (
-         <div className="flex flex-col-reverse lg:flex-row">
-              {/* Right side input */}
-              <div className="flex-[3] flex ">
-                <section className="p-2 md:p-6 bg-white rounded-md shadow-md w-full">
+         
+              <div className="max-w-5xl mx-auto py-10">
+                <section className="p-2 md:p-6 bg-white rounded-md shadow-md w-full border border-indigo-600 border-opacity-25">
                   <h2 className="text-lg font-semibold text-gray-700 capitalize">
                     Lost & Found Update
                   </h2>
@@ -182,15 +183,8 @@ const Update = () => {
                 </section>
               </div>
         
-              {/* Left side banner */}
-              <div className="flex-[2] border border-green-600">
-                {/* <img
-                  src="https://t4.ftcdn.net/jpg/00/90/92/25/360_F_90922570_pw5zemqkPsqA0EQ16QQZ3R9wXKGFSXT7.webp"
-                  alt=""
-                  className="w-full h-full object-cover"
-                /> */}
-              </div>
-            </div>
+    
+      
     );
 };
 

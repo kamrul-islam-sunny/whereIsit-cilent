@@ -27,36 +27,64 @@ const AllItems = () => {
 
   return (
     <div className="">
-       <input
+     <div className="flex justify-center py-10">
+     <input
         type="text"
         value={query}
         onChange={handleSearch}
-        placeholder="কী খুঁজছেন?"
-        className="input input-bordered w-full max-w-xs"
+        placeholder="search "
+        className="input input-bordered w-full max-w-md "
       />
-      <div className="grid md:grid-cols-2 grid-cols-3">
-        {data.map((item) => (
-          <div className="">
-            <div className="card card-compact bg-base-100 w-96 shadow-xl">
-              <figure>
-                <img src={item.thumbnail} />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                  <Link to={`/items/${item._id}`}>
-                    <button className="btn btn-primary" type="button">
-                      details
-                    </button>
-                  </Link>
-                 
-                </div>
-              </div>
-            </div>
+     </div>
+     {
+      data.length > 0 ?   <div className="grid px-4 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {data.map((item) => (
+          <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="pt-5 h-72 w-80 mx-auto ">
+            <img
+              class="rounded-t-lg h-full w-full object-cover"
+              src={item.thumbnail}
+              alt=""
+            />
           </div>
-        ))}
-      </div>
+          <div class="p-5">
+            <a href="#">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {item.title}
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+             {item.description}
+            </p>
+            <Link to={`/items/${item._id}`}>
+            <button
+              href="#"
+              class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Details
+              <svg
+                class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </button>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div> : <p className="text-4xl font-bold text-center">no data</p>
+     }
+    
     </div>
   );
 };

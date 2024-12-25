@@ -20,7 +20,7 @@ const AllRecoveredItem = () => {
   useEffect(() => {
     if (user && recoveryItem.length > 0) {
       const recoveredItems = recoveryItem.filter(
-        (item) => item.userEmail === user.email
+        (item) => item.email === user.email
       );
       setUserRecovered(recoveredItems);
       console.log("user recovery", userRecovered)

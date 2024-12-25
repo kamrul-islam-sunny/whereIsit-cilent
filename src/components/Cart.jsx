@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [allItem, setAllItem] = useState([]);
-
+//   const [limitData , setLimitData] = useState([])
   useEffect(() => {
     axios
-      .get("http://localhost:4002/allItems")
-      .then((res) => setAllItem(res.data));
+      .get("http://localhost:4002/sort")
+      .then((res) => setAllItem(res.data.slice(0,6)));
+
   }, []);
   console.log(allItem);
   return (
@@ -18,30 +19,33 @@ const Cart = () => {
       </h1>
       <div className="grid px-4 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allItem.map((item) => (
-          <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="pt-5 h-72 w-80 mx-auto ">
               <img
-                class="rounded-t-lg h-full w-full object-cover"
+                className="rounded-t-lg h-full w-full object-cover"
                 src={item.thumbnail}
                 alt=""
               />
             </div>
-            <div class="p-5">
+            <div className="p-5">
               <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {item.title}
                 </h5>
               </a>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                {item.description}
               </p>
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+               {item.Date}
+              </p>
+              <Link to={`/items/${item._id}`}>
+              <button
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Read more
+                Details
                 <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -55,12 +59,15 @@ const Cart = () => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </a>
+              </button>
+              </Link>
             </div>
           </div>
         ))}
       </div>
-      {/* <p>item</p> */}
+     <div className="text-center pt-8">
+     <button className="btn bg-indigo-600 text-white mx-auto">See all button</button>
+     </div>
     </div>
   );
 };
