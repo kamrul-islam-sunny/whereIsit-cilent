@@ -4,29 +4,25 @@ import axios from "axios";
 import Lottie from "lottie-react";
 import NoData from "../../assets/animation/noData.json";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import useAxios from "../../hooks/useAxios";
 // import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 const AllRecoveredItem = () => {
   const [recoveryItem, setRecoveryItem] = useState([]);
   const [userRecovered, setUserRecovered] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log(user);
-
+  const userEmail = user.email;
+  const axiosSecure = useAxios()
   useEffect(() => {
-    axios
-      .get(`http://localhost:4002/recoveredDate`)
+    axiosSecure
+      .get(`http://localhost:4002/recoveredDate?email=${userEmail}`)
       .then((res) => setRecoveryItem(res.data));
   }, []);
 
 
   useEffect(() => {
-    if (user && recoveryItem.length > 0) {
-      const recoveredItems = recoveryItem.filter(
-        (item) => item.email === user.email
-      );
-      setUserRecovered(recoveredItems);
-      console.log("user recovery", userRecovered)
-    } else {
+    if (recoveryItem.length === 0) {
+      
       <div className="text-center max-w-2xl">
         <Lottie animationData={NoData}></Lottie>
       </div>;
@@ -52,7 +48,7 @@ const AllRecoveredItem = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {userRecovered.map((item) => (
+          {recoveryItem.map((item) => (
             <Tr key={item._id} className="hover:bg-gray-50 mb-2 rounded-lg  lg:rounded-none">
               <Td className="px-4 py-2 text-base text-gray-800 ">{item.title}</Td>
               <Td className="px-4 py-2 text-base text-gray-800">{item.post_type}</Td>

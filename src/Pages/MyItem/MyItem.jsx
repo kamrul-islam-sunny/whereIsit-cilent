@@ -23,7 +23,7 @@ const MyItem = () => {
     .then((res) => setPostItem(res.data))
 
   }, []);
-  console.log(postItem, "postItem")
+  
   const removeItem = (id) => {
     axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
       console.log(res.data);

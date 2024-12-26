@@ -12,12 +12,13 @@ import MyItem from "../Pages/MyItem/MyItem";
 import Update from "../Pages/UpdatePage/Update";
 import AllRecoveredItem from "../Pages/All_Recovered_Item/AllRecoveredItem";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import ErrorPage from "../Pages/error/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
-      errorElement: <p>error</p>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: '/',

@@ -4,34 +4,29 @@ import "swiper/css";
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Slider = () => {
   const slides = [
     {
-      title: "Empowering the Future with AI",
+      title: "Lost Something? Let's Bring It Back",
       description:
-        "Support groundbreaking projects in artificial intelligence that are changing the world.",
-      img: "https://drsw10gc90t0z.cloudfront.net/AcuCustom/Sitename/DAM/527/AI.jpg",
+       "Report lost items or browse found items to quickly reconnect with what you've lost. Help others by returning their belongings.",
+      img: "https://t4.ftcdn.net/jpg/01/04/32/51/360_F_104325176_Tx81DzN226TYi2As92zwHsQaTVOoJjad.jpg",
     },
     {
-      title: "Support Business Growth",
+      title: "Found It? Help Someone Reclaim It",
       description:
-        "Help established businesses scale up their operations, innovate, and reach new markets.",
-      img: "https://co-offiz.com/wp-content/uploads/2023/05/Business-Growth-1.png",
+        "If you've found something, don't wait! List it now to help others recover their belongings. Your small act can make a big difference.",
+      img: "https://blog.lostandfound.io/assets/images/the-etiquette-of-finding-and-returning-lost-items.webp",
     },
     {
-      title: "Farming for the Future",
+      title: "Your Lost Belongings, Found",
       description:
-        "Support sustainable agricultural projects that aim to improve efficiency and production.",
+        "Lost something valuable? We connect you with finders who are ready to return your belongings. Report it and get started today.",
       img: "https://insidetelecom.com/wp-content/uploads/2020/10/smart-farming3.jpg",
-    },
-    {
-      title: "Support the Development of Medical Devices",
-      description:
-        "Invest in the creation of new medical technologies that will save lives and improve health outcomes.",
-      img: "https://t3.ftcdn.net/jpg/02/46/70/82/360_F_246708269_WzeXfbrGzkX5axOatRwF0kagyBtGjXh5.jpg",
-    },
+    }
   ];
   return (
     <div className="relative">

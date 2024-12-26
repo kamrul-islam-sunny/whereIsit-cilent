@@ -15,7 +15,7 @@ const Category = () => {
           setUniqueCategories(categories);
         });
     }, []);
-    console.log(uniqueCategories)
+  
     return (
         <div className='py-8 border-t-2 border-dashed'>
              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center pb-14">Browse by categories</h2>

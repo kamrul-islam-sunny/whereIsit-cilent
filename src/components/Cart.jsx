@@ -1,17 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Cart = () => {
   const [allItem, setAllItem] = useState([]);
-//   const [limitData , setLimitData] = useState([])
+
   useEffect(() => {
     axios
       .get("http://localhost:4002/sort")
       .then((res) => setAllItem(res.data.slice(0,6)));
 
   }, []);
-  console.log(allItem);
   return (
     <div className="py-10">
       <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-center py-12">
@@ -20,7 +20,7 @@ const Cart = () => {
       <div className="grid px-4 lg:px-0  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allItem.map((item) => (
           <div className="lg:max-w-sm md:max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div className="pt-5 lg:pt-5 md:pt-0 h-72 w-80 mx-auto ">
+            <div className="pt-5 lg:pt-5 md:pt-0 h-72 w-80 mx-auto">
               <img
                 className="rounded-t-lg h-full w-full object-cover"
                 src={item.thumbnail}
@@ -66,10 +66,18 @@ const Cart = () => {
         ))}
       </div>
      <div className="text-center pt-8">
-     <Link to={'/allItems'}><button className="btn bg-indigo-600 text-white mx-auto">See all button</button></Link>
+     <Link to={'/allItems'}><motion.button whileHover={{
+        scale: 1.1, // Slightly enlarge the button on hover
+      }}
+      whileTap={{
+        scale: 0.9, // Slightly shrink the button on tap
+        transition: { type: "spring", stiffness: 300 }, // Add a bounce effect
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 10 }} className="btn bg-indigo-600 hover:bg-indigo-500 text-white mx-auto">See all button</motion.button></Link>
      </div>
     </div>
   );
 };
 
 export default Cart;
+

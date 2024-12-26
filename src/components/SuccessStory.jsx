@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const SuccessStory = () => {
   return (
@@ -6,15 +7,28 @@ const SuccessStory = () => {
       <section className="md:flex md:flex-row flex-col py-10 mx-4 md:ml-6">
         <div className=" md:w-2/4 my-auto md:pr-8 ">
           <div className="space-y-4">
-            <h1 className="text-4xl text-center md:text-start font-bold ">Happiness Stories</h1>
+            <h1 className="text-4xl text-center md:text-start font-bold ">
+              Happiness Stories
+            </h1>
             <p className="text-center md:text-start text-sm md:text-lg">
-            Heartwarming stories of lost items finding their way back home, thanks to kindness and community. Every reunion inspires hope, gratitude, and the belief that good things still happen. These moments remind us that humanity shines brightest in times of need.
+              Heartwarming stories of lost items finding their way back home,
+              thanks to kindness and community. Every reunion inspires hope,
+              gratitude, and the belief that good things still happen. These
+              moments remind us that humanity shines brightest in times of need.
             </p>
           </div>
         </div>
         <div className="md:w-2/4 grid grid-cols-2 place-items-center md:pt-0 pt-6 ">
           <div className="col-span-2 lg:col-span-1 ">
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-80 w-60 ">
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-80 w-60 "
+            >
               <div className="w-full h-36 border">
                 <img
                   class="rounded-t-lg h-full w-full object-cover"
@@ -33,10 +47,16 @@ const SuccessStory = () => {
                   Gratitude for the honesty and quick help!
                 </p>
               </div>
-            </div> 
+            </motion.div>
           </div>
           <div className="lg:flex flex-col gap-4 hidden ">
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-64 w-60 ">
+            {/* cart 01 */}
+            <motion.div animate={{ x: [0, -10, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }} class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-64 w-60 ">
               <div className="w-full h-36 border">
                 <img
                   class="rounded-t-lg h-full w-full object-cover"
@@ -47,12 +67,18 @@ const SuccessStory = () => {
               <div class="p-3">
                 <a href="#">
                   <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Pet Reunited Through Website
+                    Pet Reunited Through Website
                   </h5>
                 </a>
               </div>
-            </div>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-64 w-60 ">
+            </motion.div>
+            {/* cart 02 */}
+            <motion.div animate={{ y: [0, -10, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }} class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-64 w-60 ">
               <div className="w-full h-36 border">
                 <img
                   class="rounded-t-lg h-full w-full object-cover"
@@ -63,11 +89,11 @@ const SuccessStory = () => {
               <div class="p-3">
                 <a href="#">
                   <h5 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Laptop Returned by Honest Finder
+                    Laptop Returned by Honest Finder
                   </h5>
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
