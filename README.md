@@ -26,7 +26,6 @@ https://lost-and-found-df2f9.web.app/
 # npm package 
 
 - axios
-- flowbite
 - framer-motion
 - lottie
 - datepicker 

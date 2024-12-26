@@ -58,7 +58,7 @@ const Slider = () => {
 
                 <p className="mt-4 md:text-xl text-base">{slide.description}</p>
                 <button className="btn bg-emerald-600 border-none text-white hover:bg-emerald-500 hover:text-slate-900 mt-6">
-                  SEE CAMPAIGN
+                  SEE Post
                 </button>
                
               </div>
