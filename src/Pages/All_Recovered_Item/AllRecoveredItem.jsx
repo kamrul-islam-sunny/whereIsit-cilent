@@ -3,35 +3,32 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import Lottie from "lottie-react";
 import NoData from "../../assets/animation/noData.json";
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import useAxios from "../../hooks/useAxios";
-// import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import AllRecoveryCart from "../../components/AllRecoveryCart";
+import AllRecoveryTable from "../../components/AllRecoveryTable";
+import { HiOutlineBars4 } from "react-icons/hi2";
+import { BsGrid3X3Gap } from "react-icons/bs";
 
 const AllRecoveredItem = () => {
   const [recoveryItem, setRecoveryItem] = useState([]);
-  const [userRecoveryItem, setUserRecoveryItem] = useState([])
+  const [userRecoveryItem, setUserRecoveryItem] = useState([]);
+  const [isTable, setIsTable] = useState(true);
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
-  const axiosSecure = useAxios()
+
+  const axiosSecure = useAxios();
   useEffect(() => {
     axiosSecure
       .get(`http://localhost:4002/recoveredDate?email=${userEmail}`)
       .then((res) => setRecoveryItem(res.data));
   }, []);
 
-console.log(recoveryItem)
+  console.log(recoveryItem);
   useEffect(() => {
-
-    const reDate =  recoveryItem.filter(item => item.status === "recovered")
-    setUserRecoveryItem(reDate)
-
-    if (recoveryItem.length === 0) {
-      <div className="text-center max-w-2xl">
-        <Lottie animationData={NoData}></Lottie>
-      </div>;
-    }
+    const reDate = recoveryItem.filter((item) => item.status === "recovered");
+    setUserRecoveryItem(reDate);
   }, [recoveryItem, user]);
-  console.log("re filtering", userRecoveryItem)
+  console.log("re filtering", userRecoveryItem);
 
   return (
     <div>
@@ -39,31 +36,28 @@ console.log(recoveryItem)
         <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
           My Items
         </h2>
-        <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
-      <Table>
-        <Thead className="bg-gray-100">
-          <Tr>
-            <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700">Title</Th>
-            <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700">Post Type</Th>
-            <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700">Location</Th>
-            <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700">Date</Th>
-            <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700">Status</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {userRecoveryItem.map((item) => (
-            <Tr key={item._id} className="hover:bg-gray-50 mb-2 rounded-lg  lg:rounded-none">
-              <Td className="px-4 py-2 text-base text-gray-800 ">{item.title}</Td>
-              <Td className="px-4 py-2 text-base text-gray-800">{item.post_type}</Td>
-              <Td className="px-4 py-2 text-base text-gray-800">{item.location}</Td>
-              <Td className="px-4 py-2 text-base text-gray-800">{new Date(item.Date).toLocaleDateString('en-GB')}</Td>
-              <Td className="px-4 py-2 text-base text-gray-800">{item?.status}</Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
+        <div className="flex justify-end gap-2 py-4">
+          <p onClick={()=>setIsTable(true)} className={ isTable ? 'text-3xl text-blue-600' : 'text-3xl text-slate-800' }><BsGrid3X3Gap /></p>
+          <p onClick={()=>setIsTable(false)} className={ !isTable ? 'text-3xl text-blue-600' : 'text-3xl text-slate-800' }><HiOutlineBars4 /></p>
+        </div>
+        {/* <AllRecoveryTable userRecoveryItem={userRecoveryItem}></AllRecoveryTable> */}
+        {userRecoveryItem.length === 0 && (
+          <div className="text-center mx-auto py-4 max-w-xl">
+            <Lottie animationData={NoData}></Lottie>
+          </div>
+        )}
+        <div className="">
+          {isTable === true ? (
+            <AllRecoveryCart
+              userRecoveryItem={userRecoveryItem}
+            ></AllRecoveryCart>
+          ) : (
+            <AllRecoveryTable
+              userRecoveryItem={userRecoveryItem}
+            ></AllRecoveryTable>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

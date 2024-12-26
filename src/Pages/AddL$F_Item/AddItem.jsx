@@ -26,6 +26,13 @@ const AddItem = () => {
     const initialData = Object.fromEntries(formDate.entries());
     initialData.Date = startDate;
     const userEmail = user.email;
+    for (const key in initialData) {
+      if(initialData[key] === "")
+      {
+        toast.error(`${key.toUpperCase()} is required! `)
+        return;
+      }
+    }
     const userInfo = {userEmail, ...initialData, 
       category: isCustomCategory ? customCategory : initialData.category,
     };
