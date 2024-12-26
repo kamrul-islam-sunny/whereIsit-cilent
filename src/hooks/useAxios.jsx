@@ -4,7 +4,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const AxiosInstance = axios.create(
     {
-        baseURL: 'http://localhost:4002',
+        baseURL: 'https://lost-found-server-side.vercel.app',
         withCredentials: true
     }
 )

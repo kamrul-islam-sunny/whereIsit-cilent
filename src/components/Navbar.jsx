@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const Links = (
@@ -15,7 +17,7 @@ const Navbar = () => {
   );
 
   const { user, userLogout } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
 
   return (
     <div className="navbar bg-base-100 max-w-6xl mx-auto">
@@ -44,7 +46,7 @@ const Navbar = () => {
             {Links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">WhereIsIt</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>
@@ -71,18 +73,21 @@ const Navbar = () => {
               >
                 <li className="text-lg font-medium ">
                   <Link to={"/addItems"} className="justify-between">
-                    Add Lost & Found 
+                    Add Lost & Found
                   </Link>
                 </li>
                 <li className="text-lg font-medium ">
-                  <Link to={'/allRecovered'}>Recovered Items</Link>
+                  <Link to={"/allRecovered"}>Recovered Items</Link>
                 </li>
                 <li className="text-lg font-medium ">
-                  <Link to={'/myItems'}>Manage My Items</Link>
+                  <Link to={"/myItems"}>Manage My Items</Link>
                 </li>
               </ul>
             </div>
-            <button onClick={userLogout} className=" bg-indigo-600 hover:bg-indigo-700 text-white text-base font-medium btn btn-primary">
+            <button
+              onClick={userLogout}
+              className="ml-2 bg-indigo-600 hover:bg-indigo-700 text-white text-base font-medium btn btn-primary"
+            >
               <Link>Logout</Link>
             </button>
           </>

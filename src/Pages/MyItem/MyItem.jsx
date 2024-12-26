@@ -8,6 +8,7 @@ import NoData from "../../assets/animation/noData.json";
 import toast from "react-hot-toast";
 import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyItem = () => {
   const [postItem, setPostItem] = useState([]);
@@ -15,7 +16,7 @@ const MyItem = () => {
   const axiosSecure = useAxios()
   useEffect(() => {
     // axios
-    //   .get(`http://localhost:4002/userItems?email=${user.email}`, {
+    //   .get(`https://lost-found-server-side.vercel.app/userItems?email=${user.email}`, {
     //     withCredentials: true,
     //   })
     //   .then((res) => setPostItem(res.data));
@@ -25,7 +26,7 @@ const MyItem = () => {
   }, []);
   
   const removeItem = (id) => {
-    axios.delete(`http://localhost:4002/item/${id}`).then((res) => {
+    axios.delete(`https://lost-found-server-side.vercel.app/item/${id}`).then((res) => {
       console.log(res.data);
       const remainingData =  postItem.filter(item => item._id !== id);
       setPostItem(remainingData)
@@ -62,10 +63,6 @@ const MyItem = () => {
     ));
   };
 
-  const handleUpdate = (id) => {
-
-
-  };
   if (postItem.length === 0) {
     return (
       <div className="text-center max-w-2xl">
@@ -75,6 +72,9 @@ const MyItem = () => {
   }
   return (
     <div className="p-6">
+      <Helmet>
+        <title>My Added item.</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
         My Items
       </h2>

@@ -45,11 +45,11 @@ const AuthProvider = ({children}) => {
       {
         const user = {email: currentUser.email}
         axios
-          .post("http://localhost:4002/jwt", user, {withCredentials: true})
+          .post("https://lost-found-server-side.vercel.app/jwt", user, {withCredentials: true})
           .then((res) => console.log(res.data));
           setLoading(false)
       }else{
-        axios.post('http://localhost:4002/logout', {}, {withCredentials: true})
+        axios.post('https://lost-found-server-side.vercel.app/logout', {}, {withCredentials: true})
         .then(res => {console.log(res.data)})
       }
       setLoading(false);

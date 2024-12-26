@@ -13,7 +13,7 @@ const Update = () => {
     const [allData, setAllData] = useState([])
 
     useEffect(()=>{
-      axios.get(`http://localhost:4002/allItems`)
+      axios.get(`https://lost-found-server-side.vercel.app/allItems`)
       .then(res => setAllData(res.data))
     }, [])
   
@@ -27,7 +27,7 @@ const Update = () => {
         const userEmail = user.email
         const userUpdatedData = {...initialData, userEmail};
         console.log(userUpdatedData)
-        axios.put(`http://localhost:4002/itemUpdate/${item._id}`, userUpdatedData)
+        axios.put(`https://lost-found-server-side.vercel.app/itemUpdate/${item._id}`, userUpdatedData)
         .then(res => {
           console.log(res.data)
           toast.success('successfully Update item.')

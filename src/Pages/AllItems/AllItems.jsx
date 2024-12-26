@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllItems = () => {
   const [data, setData] = useState([]);
@@ -8,7 +9,7 @@ const AllItems = () => {
   const [query, setQuery] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:4002/allItems`)
+      .get(`https://lost-found-server-side.vercel.app/allItems`)
       .then((res) => setData(res.data));
   }, []);
 
@@ -19,12 +20,15 @@ const AllItems = () => {
       setData(loadedData);
     }
     axios
-      .get(`http://localhost:4002/search?query=${value}`)
+      .get(`https://lost-found-server-side.vercel.app/search?query=${value}`)
       .then((res) => setData(res.data));
   };
 
   return (
     <div className="pb-4">
+      <Helmet>
+        <title>All lost and found item</title>
+      </Helmet>
       <div className="flex justify-center py-10 mx-4">
         <input
           type="text"

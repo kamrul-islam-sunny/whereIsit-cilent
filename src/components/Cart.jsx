@@ -8,7 +8,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4002/sort")
+      .get("https://lost-found-server-side.vercel.app/sort")
       .then((res) => setAllItem(res.data.slice(0,6)));
 
   }, []);

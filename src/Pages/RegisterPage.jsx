@@ -6,10 +6,11 @@ import { IoEye } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import { Helmet } from "react-helmet-async";
 
 const RegisterPage = () => {
-  const { userRegister, UpdateUserProfile, userGoogleLogin } = useContext(AuthContext);
+  const { userRegister, UpdateUserProfile, userGoogleLogin } =
+    useContext(AuthContext);
   const [show, setShow] = useState(false);
   const handleShowPass = () => setShow(!show);
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const RegisterPage = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    const user = { name, email, photo};
+    const user = { name, email, photo };
 
     // TODO ADD MY SERVER SIDE LINK
 
@@ -36,11 +37,10 @@ const RegisterPage = () => {
     // }
     userRegister(email, password)
       .then((result) => {
-        toast.success('Successfully Register!')
+        toast.success("Successfully Register!");
         navigate(location?.state ? location.state : "/");
         UpdateUserProfile({ displayName: name, photoURL: photo })
-          .then((result) => {
-          })
+          .then((result) => {})
           .catch((error) => {
             toast.error(error.message);
           });
@@ -54,7 +54,7 @@ const RegisterPage = () => {
   const handleGoogleSignIn = () => {
     userGoogleLogin()
       .then((result) => {
-        toast.success('Successfully Register!')
+        toast.success("Successfully Register!");
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
@@ -63,6 +63,9 @@ const RegisterPage = () => {
   };
   return (
     <div className="min-h-screen flex justify-center py-10 items-center ">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="card  bg-gradient-to-r  w-full md:max-w-lg max-w-sm rounded-lg py-10 shrink-0  border border-sky-200">
         <h2 className="text-2xl font-semibold text-center">
           Register your account
@@ -130,9 +133,9 @@ const RegisterPage = () => {
           </div>
         </form>
         <h2 className="font-normal text-center">
-          Already Have an account ? 
+          Already Have an account ?
           <Link className="text-indigo-700 text-lg" to={"/login"}>
-             Login
+            Login
           </Link>
         </h2>
         <button onClick={handleGoogleSignIn} className="btn w-56 mx-auto mt-4">

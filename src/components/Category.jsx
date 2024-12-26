@@ -6,7 +6,7 @@ const Category = () => {
     const [uniqueCategories, setUniqueCategories] = useState([]);
 
     useEffect(() => {
-      axios.get(`http://localhost:4002/allItems`)
+      axios.get(`https://lost-found-server-side.vercel.app/allItems`)
         .then(res => {
           setAllData(res.data);
   

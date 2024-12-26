@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const LoginPage = () => {
   const { userLogin, userGoogleLogin, setEmail } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const LoginPage = () => {
   };
   return (
     <div>
+        <Helmet>
+              <title>Login</title>
+            </Helmet>
       <div className="min-h-screen flex justify-center items-center ">
         <div className="card bg-gradient-to-r  w-full md:max-w-lg max-w-sm rounded-md py-10 shrink-0 shadow-2xl  border border-indigo-200 my-4">
           <h2 className="text-2xl  font-semibold text-center">

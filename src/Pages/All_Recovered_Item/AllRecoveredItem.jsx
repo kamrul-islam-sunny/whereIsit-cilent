@@ -8,6 +8,7 @@ import AllRecoveryCart from "../../components/AllRecoveryCart";
 import AllRecoveryTable from "../../components/AllRecoveryTable";
 import { HiOutlineBars4 } from "react-icons/hi2";
 import { BsGrid3X3Gap } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 const AllRecoveredItem = () => {
   const [recoveryItem, setRecoveryItem] = useState([]);
@@ -19,7 +20,7 @@ const AllRecoveredItem = () => {
   const axiosSecure = useAxios();
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:4002/recoveredDate?email=${userEmail}`)
+      .get(`https://lost-found-server-side.vercel.app/recoveredDate?email=${userEmail}`)
       .then((res) => setRecoveryItem(res.data));
   }, []);
 
@@ -32,6 +33,9 @@ const AllRecoveredItem = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>All Recovered item.</title>
+      </Helmet>
       <div className="p-6">
         <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
           My Items

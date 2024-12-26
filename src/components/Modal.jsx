@@ -20,7 +20,7 @@ const Modal = ({ itemDate, setDetailsDate }) => {
     console.log(recoveryInfo);
 
     axios
-      .post("http://localhost:4002/recoveredItem", recoveryInfo)
+      .post("https://lost-found-server-side.vercel.app/recoveredItem", recoveryInfo)
       .then((res) => console.log(res.data));
 
     if (recovered_location) {
@@ -28,7 +28,7 @@ const Modal = ({ itemDate, setDetailsDate }) => {
         status: "recovered",
       };
       axios
-        .patch(`http://localhost:4002/item/${itemDate._id}`, data)
+        .patch(`https://lost-found-server-side.vercel.app/item/${itemDate._id}`, data)
         .then((res) => {
           console.log(res.data);
           if (res.data.modifiedCount > 0) {

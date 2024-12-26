@@ -43,7 +43,7 @@ import ErrorPage from "../Pages/error/ErrorPage";
         {
           path: '/items/:id',
           element: <PrivateRouter><Details></Details></PrivateRouter>,
-          loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
+          loader: ({params})=> fetch(`https://lost-found-server-side.vercel.app/Items/${params.id}`)  
         },
         {
           path: '/myItems',
@@ -52,7 +52,7 @@ import ErrorPage from "../Pages/error/ErrorPage";
         {
           path: '/updateItems/:id',
           element: <PrivateRouter><Update></Update></PrivateRouter>,
-          loader: ({params})=> fetch(`http://localhost:4002/Items/${params.id}`)  
+          loader: ({params})=> fetch(`https://lost-found-server-side.vercel.app/Items/${params.id}`)  
         },
         {
           path: '/allRecovered',
