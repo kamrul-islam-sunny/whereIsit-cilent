@@ -10,6 +10,8 @@ const AddItem = () => {
   const [startDate, setStartDate] = useState(new Date());
   const {user} = useContext(AuthContext);
   const [allData, setAllData] = useState([])
+  const [isCustomCategory, setIsCustomCategory] = useState(false);
+  const [customCategory, setCustomCategory] = useState("");
 
   useEffect(()=>{
     axios.get(`http://localhost:4002/allItems`)
@@ -22,7 +24,9 @@ const AddItem = () => {
     const initialData = Object.fromEntries(formDate.entries());
     initialData.Date = startDate;
     const userEmail = user.email;
-    const userInfo = {userEmail, ...initialData};
+    const userInfo = {userEmail, ...initialData, 
+      category: isCustomCategory ? customCategory : initialData.category,
+    };
     axios.post('http://localhost:4002/addItems', userInfo)
     .then(res => {
       console.log(res.data)
@@ -30,6 +34,13 @@ const AddItem = () => {
     })
 
   }
+  const handleCategoryChange = (e) => {
+    if (e.target.value === "create_new") {
+      setIsCustomCategory(true);
+    } else {
+      setIsCustomCategory(false);
+    }
+  };
 
   return (
     <div className="max-w-5xl mx-auto py-10 ">
@@ -89,11 +100,22 @@ const AddItem = () => {
                   name="category"
                   id="category"
                   className="border p-2 rounded-md w-full"
+                  onChange={handleCategoryChange}
                 >
                   {
                     allData.map(item => <option key={item._id} value={item.category}>{item.category}</option>)
                   }
+                  <option value="create_new">Create New Category</option>
                 </select>
+                {isCustomCategory && (
+                  <input
+                    type="text"
+                    placeholder="Enter new category"
+                    value={customCategory}
+                    onChange={(e) => setCustomCategory(e.target.value)}
+                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                  />
+                )}
               </div>
 
               {/* Location */}

@@ -17,10 +17,10 @@ const Cart = () => {
       <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-center py-12">
         Latest Find & Lost{" "}
       </h1>
-      <div className="grid px-4 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid px-4 lg:px-0  grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8">
         {allItem.map((item) => (
-          <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div className="pt-5 h-72 w-80 mx-auto ">
+          <div className="lg:max-w-sm md:max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="pt-5 lg:pt-5 md:pt-0 h-72 w-80 mx-auto ">
               <img
                 className="rounded-t-lg h-full w-full object-cover"
                 src={item.thumbnail}
@@ -66,7 +66,7 @@ const Cart = () => {
         ))}
       </div>
      <div className="text-center pt-8">
-     <button className="btn bg-indigo-600 text-white mx-auto">See all button</button>
+     <Link to={'/allItems'}><button className="btn bg-indigo-600 text-white mx-auto">See all button</button></Link>
      </div>
     </div>
   );

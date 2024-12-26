@@ -26,8 +26,8 @@ const AllItems = () => {
 
 
   return (
-    <div className="">
-     <div className="flex justify-center py-10">
+    <div className="pb-4">
+     <div className="flex justify-center py-10 mx-4">
      <input
         type="text"
         value={query}
@@ -39,7 +39,7 @@ const AllItems = () => {
      {
       data.length > 0 ?   <div className="grid px-4 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {data.map((item) => (
-          <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div class="lg:max-w-sm md:max-w-xs bg-white border border-indigo-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className="pt-5 h-72 w-80 mx-auto ">
             <img
               class="rounded-t-lg h-full w-full object-cover"
