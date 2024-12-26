@@ -78,36 +78,36 @@ const MyItem = () => {
       <h2 className="text-2xl font-bold mb-4 text-gray-700 text-center">
         My Items
       </h2>
-      <div className="overflow-x-auto">
-        <table className="table-auto border-collapse border border-gray-300 w-full text-left">
-          <thead className="bg-gray-100 text-gray-700 uppercase text-sm font-semibold">
-            <tr>
-              <th className="border border-gray-300 px-6 py-3">Title</th>
-              <th className="border border-gray-300 px-6 py-3">Post Type</th>
-              <th className="border border-gray-300 px-6 py-3">Location</th>
-              <th className="border border-gray-300 px-6 py-3">Date</th>
-              <th className="border border-gray-300 px-6 py-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+      <div className="overflow-x-auto bg-white p-4 rounded-lg shadow-md">
+        <Table >
+          <Thead className="bg-gray-100">
+            <Tr>
+              <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700" >Title</Th>
+              <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700" >Post Type</Th>
+              <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700" >Location</Th>
+              <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700" >Date</Th>
+              <Th className="text-left px-4 py-2 text-sm font-semibold text-gray-700" >Actions</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {postItem.map((item) => (
-              <tr
+              <Tr
                 key={item._id}
-                className="hover:bg-blue-100 even:bg-gray-50 odd:bg-white"
+                className="hover:bg-gray-50 mb-2 rounded-lg  lg:rounded-none"
               >
-                <td className="border border-gray-300 px-6 py-3">
+                <Td className="px-4 py-2 text-base text-gray-800 ">
                   {item.title}
-                </td>
-                <td className="border border-gray-300 px-6 py-3">
+                </Td>
+                <Td className="px-4 py-2 text-base text-gray-800 ">
                   {item.post_type}
-                </td>
-                <td className="border border-gray-300 px-6 py-3">
+                </Td>
+                <Td className="px-4 py-2 text-base text-gray-800 ">
                   {item.location}
-                </td>
-                <td className="border border-gray-300 px-6 py-3">
-                  {item.Date}
-                </td>
-                <td className="border border-gray-300 px-6 py-3 flex gap-4">
+                </Td>
+                <Td className="px-4 py-2 text-base text-gray-800 ">
+                {new Date(item.Date).toLocaleDateString('en-GB')}
+                </Td>
+                <Td className="px-4 py-2 text-base text-gray-800 ">
                  <Link to={`/updateItems/${item._id}`}>
                     <button className="btn text-white bg-indigo-600 hover:bg-indigo-700" type="button">
                       Update
@@ -119,11 +119,11 @@ const MyItem = () => {
                   >
                     Delete
                   </button>
-                </td>
-              </tr>
+                </Td>
+              </Tr>
             ))}
-          </tbody>
-        </table>
+          </Tbody>
+        </Table>
       </div>
     </div>
   );

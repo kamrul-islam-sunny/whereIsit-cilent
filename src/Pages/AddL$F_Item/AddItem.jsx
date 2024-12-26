@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from 'axios';
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,6 +13,7 @@ const AddItem = () => {
   const [allData, setAllData] = useState([])
   const [isCustomCategory, setIsCustomCategory] = useState(false);
   const [customCategory, setCustomCategory] = useState("");
+  const navigate = useNavigate()
 
   useEffect(()=>{
     axios.get(`http://localhost:4002/allItems`)
@@ -29,8 +31,12 @@ const AddItem = () => {
     };
     axios.post('http://localhost:4002/addItems', userInfo)
     .then(res => {
-      console.log(res.data)
-      toast.success('successfully add item.')
+      console.log(res.data.acknowledged)
+      if(res.data.acknowledged)
+      {
+        toast.success('successfully add item.')
+        navigate('/')
+      }
     })
 
   }
@@ -96,15 +102,18 @@ const AddItem = () => {
                 <label className="text-gray-700" htmlFor="category">
                   Category
                 </label>
+
                 <select
                   name="category"
                   id="category"
+                  required
                   className="border p-2 rounded-md w-full"
                   onChange={handleCategoryChange}
                 >
                   {
                     allData.map(item => <option key={item._id} value={item.category}>{item.category}</option>)
                   }
+                  <option value="create_new">No</option>
                   <option value="create_new">Create New Category</option>
                 </select>
                 {isCustomCategory && (

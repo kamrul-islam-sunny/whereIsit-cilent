@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Modal = ({ itemDate, setDetailsDate }) => {
   const [recoveryDate, setRecoveryDate] = useState(new Date());
@@ -32,12 +33,13 @@ const Modal = ({ itemDate, setDetailsDate }) => {
           console.log(res.data);
           if (res.data.modifiedCount > 0) {
             setDetailsDate({ ...itemDate, status: "recovered" });
+            toast.success('Recovered')
           }
         });
     }
   };
 
-  useEffect(() => {}, []);
+
 
   const closeModal = () => {
     const modal = document.getElementById("my_modal_1");
@@ -46,13 +48,7 @@ const Modal = ({ itemDate, setDetailsDate }) => {
 
   return (
     <div>
-      {/* Trigger Button */}
-      {/* <button
-        onClick={openModal}
-        className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-500 focus:ring-2 focus:ring-blue-300 focus:outline-none transition duration-150"
-      >
-        Open Recovered Item Form
-      </button> */}
+
 
       {/* Modal */}
       <dialog id="my_modal_1" className="modal">
