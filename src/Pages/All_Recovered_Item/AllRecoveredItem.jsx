@@ -9,7 +9,7 @@ import useAxios from "../../hooks/useAxios";
 
 const AllRecoveredItem = () => {
   const [recoveryItem, setRecoveryItem] = useState([]);
-  const [userRecovered, setUserRecovered] = useState([]);
+  const [userRecoveryItem, setUserRecoveryItem] = useState([])
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
   const axiosSecure = useAxios()
@@ -19,16 +19,19 @@ const AllRecoveredItem = () => {
       .then((res) => setRecoveryItem(res.data));
   }, []);
 
-
+console.log(recoveryItem)
   useEffect(() => {
+
+    const reDate =  recoveryItem.filter(item => item.status === "recovered")
+    setUserRecoveryItem(reDate)
+
     if (recoveryItem.length === 0) {
-      
       <div className="text-center max-w-2xl">
         <Lottie animationData={NoData}></Lottie>
       </div>;
     }
   }, [recoveryItem, user]);
-
+  console.log("re filtering", userRecoveryItem)
 
   return (
     <div>
@@ -48,7 +51,7 @@ const AllRecoveredItem = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {recoveryItem.map((item) => (
+          {userRecoveryItem.map((item) => (
             <Tr key={item._id} className="hover:bg-gray-50 mb-2 rounded-lg  lg:rounded-none">
               <Td className="px-4 py-2 text-base text-gray-800 ">{item.title}</Td>
               <Td className="px-4 py-2 text-base text-gray-800">{item.post_type}</Td>
