@@ -9,7 +9,13 @@
 Check out the live project here:  
 [🌐 WhereIsIt](https://lost-and-found-df2f9.web.app/)
 
----
+
+# My Project
+
+Here is an image from my project:
+
+![Project Image](https://raw.githubusercontent.com/your-username/your-repository/main/images/project-image.jpg)
+
 
 ## ✨ Features
 
