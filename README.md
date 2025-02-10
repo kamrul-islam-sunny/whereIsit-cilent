@@ -44,8 +44,6 @@ Check out the live project here:
   - Swiper (for sliders or carousels)
   - Super Responsive Table (for table views)
   - Datepicker (for date selection)
-
-- **Backend**:
   - Firebase (for authentication and hosting)
   - Axios (for API requests)
 
