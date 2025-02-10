@@ -46,6 +46,11 @@ Check out the live project here:
   - Datepicker (for date selection)
   - Firebase (for authentication and hosting)
   - Axios (for API requests)
+    
+- **Backend**:
+  - node js
+  - express js
+  - movgodb
 
 - **Other Tools**:
   - npm (for package management)
